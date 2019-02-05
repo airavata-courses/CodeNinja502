@@ -24,16 +24,10 @@ public class MediaRepository{
 
 
 	public List<String> getURLS() {
-		//MongoClient client = new MongoClient("projecthub.documents.azure.com",10255); //with default server and port adress
 		MongoClient client = new MongoClient(new MongoClientURI("mongodb://projecthub:uScHiw5Ahp7OSthjECegyWBi4iV0NdiuqOgTOLLYrysbZIvQ4Uh0XuGpJaCsOLWTNpsd2Czrb0xWduOTOF06Og==@projecthub.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"));
 
 		DB db = client.getDB( "MediaDB" );
 		DBCollection collection = db.getCollection("media");
-
-		//DBObject dbo = collection.findOne();
-		//String url = (String) dbo.get("URL");
-
-		//img URL, desc, date, userID<email id>
 
 		List<String>ans = new ArrayList<String>();
 
@@ -47,15 +41,21 @@ public class MediaRepository{
 		}*/
 
 		DBCursor iterDoc = collection.find(); 
-
-
 		Iterator<?> it = iterDoc.iterator(); 
-
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
 		while (it.hasNext())
 		{  
 			BasicDBObject obj=new BasicDBObject();
 			obj = (BasicDBObject) it.next();
-			
+
+			String a = obj.toJson();
+			sb.append(a);
+			sb.append(",");
+
+
+
 			//System.out.println(it.next());  
 			//System.out.println(obj.toJson());
 			/*String value = obj.toJson();
@@ -77,6 +77,11 @@ public class MediaRepository{
 			
 			
 		}
+		
+		sb.setLength(sb.length() - 1);
+		sb.append("]");
+		String res = sb.toString();
+
 		return ans;
 	}
 
