@@ -23,13 +23,13 @@ public class MediaRepository{
 	public MediaRepository() {}
 
 
-	public List<String> getURLS() {
+	public String getURLS() {
 		MongoClient client = new MongoClient(new MongoClientURI("mongodb://projecthub:uScHiw5Ahp7OSthjECegyWBi4iV0NdiuqOgTOLLYrysbZIvQ4Uh0XuGpJaCsOLWTNpsd2Czrb0xWduOTOF06Og==@projecthub.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"));
 
 		DB db = client.getDB( "MediaDB" );
 		DBCollection collection = db.getCollection("media");
 
-		List<String>ans = new ArrayList<String>();
+		//List<String>ans = new ArrayList<String>();
 
 		//ans.add(url);
 		//List<Media> data = new ArrayList<Media>();
@@ -82,7 +82,7 @@ public class MediaRepository{
 		sb.append("]");
 		String res = sb.toString();
 
-		return ans;
+		return res;
 	}
 
 

@@ -13,7 +13,7 @@ public class MediaController {
 	private MediaRepository repository = new MediaRepository();
 	  
 	@GetMapping("/getLinks")
-	public List<String> getAllURLS() {
+	public String getAllURLS() {
 	    return repository.getURLS();
 	  }
 
