@@ -1,5 +1,5 @@
 import React from 'react';
-
+const CREATE_POST = '';
 
 const axios = require("axios");
 
@@ -71,6 +71,14 @@ class ReactUploadImage extends React.Component {
           service: "uploadService"
               }
         console.log(feed_post);
+        axios.post(
+                CREATE_POST,
+                feed_post).
+                    then(function(response){
+                        console.log(response);
+                    })
+                    .catch()
+                
     }
 
 

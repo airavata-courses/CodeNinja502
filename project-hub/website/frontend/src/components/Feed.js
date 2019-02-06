@@ -1,6 +1,49 @@
 import React from 'react'
 import { Feed, Icon } from 'semantic-ui-react'
+import axios from 'axios';
 
+const FEED_URL = '';
+
+
+
+
+export default class FeedExampleEventsProp extends React.Component {
+
+    constructor(){
+      super();
+      this.state = {
+        events : []
+      }
+      this.parse_json = this.parse_json.bind(this);
+    }
+    componentDidMount() {
+
+      axios.get(FEED_URL)
+        .then( function(response){
+          console.log(response)
+          this.parse_json(response)
+        }).catch(function(error)
+          console.log(error)
+        )
+    }
+
+    parse_json(response){
+      var i;
+      for(i=0; i<response.length; i++){
+        for (var data in response[i]){
+          switch(data){
+            case 'URL':
+
+            case ''
+          }
+        }
+      }
+    }
+
+    render() {
+        return (<Feed events={this.events} size = "large" />);
+    }
+}
 const events = [
   {
     date: '1 Hour Ago',
@@ -33,6 +76,6 @@ const events = [
   },
 ]
 
-const FeedExampleEventsProp = () => <Feed events={events} size = "large" />
+const FeedExampleEventsProp = () => 
 
 export default FeedExampleEventsProp

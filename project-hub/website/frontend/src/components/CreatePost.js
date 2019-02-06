@@ -35,25 +35,6 @@ export default class CreatePost extends Component {
         this.setState({aois: selected});
     }
 
-	// handleSubmit(e) {
- //        e.preventDefault();
- //        var copyOptions = [];
- //        var i=0;
- //        for (i=0; i<this.state.aois.length; i++){
- //            copyOptions.push(this.state.aois[i]['value']);
- //        }
-
-
- //        console.log(copyOptions);
- //        const feed_post = {
- //            aoi: copyOptions,
- //            content: this.state.content,
- //            image_urls:'',
- //            email: this.state.email
- //        }
- //        console.log(feed_post);
- //        //this.props.registerUser(user, this.props.history);
- //    }
     componentWillReceiveProps(nextProps) {
         if(nextProps.errors) {
             this.setState({
