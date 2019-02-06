@@ -33,7 +33,6 @@ public class MediaRepository{
 			String a = obj.toJson();
 			sb.append(a);
 			sb.append(",");
-			
 		}
 		
 		sb.setLength(sb.length() - 1);
