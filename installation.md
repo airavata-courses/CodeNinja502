@@ -16,17 +16,17 @@ Requirements: Java and Maven
 
 Requirements: Go and plugins
 
--1) Install Go and set GOPATH
+- Install Go and set GOPATH
 	Refer: https://golang.org/doc/install
- 2) Setup environmental variables for Go as referred in https://golang.org/doc/install
- 3) Verify by going to cmd(windows), terminal(linux,mac) by typing 'go' command.
- 4) Run following commands-
+ - Setup environmental variables for Go as referred in https://golang.org/doc/install
+ - Verify by going to cmd(windows), terminal(linux,mac) by typing 'go' command.
+ - Run following commands-
  go get "github.com/gorilla/mux"
  go get "github.com/mongodb/mongo-go-driver/mongo"
  go get "github.com/mongodb/mongo-go-driver/bson"
  
- 5) In cmd/terminal, go to the folder where main.go is located.
- 6) Run following commands:
+ - In cmd/terminal, go to the folder where main.go is located.
+ - Run following commands:
   go build
   go run "main.go"
   
