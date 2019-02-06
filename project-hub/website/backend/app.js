@@ -5,6 +5,7 @@ const passport = require('passport');
 const config = require('./db');
 
 const users = require('./routes/user'); 
+const upload = require('./routes/upload');
 
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
     () => {console.log('Database is connected') },
@@ -12,6 +13,7 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 );
 
 const app = express();
+
 app.use(passport.initialize());
 require('./passport')(passport);
 
@@ -19,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/users', users);
+app.use('/upload',upload);
 
 app.get('/', function(req, res) {
     res.send('hello');
