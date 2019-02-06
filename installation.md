@@ -10,3 +10,24 @@ Requirements: Java and Maven
  - Download the file "feed-fetch-service-0.0.1-SNAPSHOT.jar" from https://github.com/airavata-courses/CodeNinja502/blob/pulmath-services/feed-fetch-service-0.0.1-SNAPSHOT.jar and run it.
  - The service is running.
  #### Thank you.
+
+
+### Upload Service - This service is used to upload information about posts to mongoDB
+
+Requirements: Go and plugins
+
+-1) Install Go and set GOPATH
+	Refer: https://golang.org/doc/install
+ 2) Setup environmental variables for Go as referred in https://golang.org/doc/install
+ 3) Verify by going to cmd(windows), terminal(linux,mac) by typing 'go' command.
+ 4) Run following commands-
+ go get "github.com/gorilla/mux"
+ go get "github.com/mongodb/mongo-go-driver/mongo"
+ go get "github.com/mongodb/mongo-go-driver/bson"
+ 
+ 5) In cmd/terminal, go to the folder where main.go is located.
+ 6) Run following commands:
+  go build
+  go run "main.go"
+  
+ ____upload service will run on port 8082. Can be accessed by localhost:8082/rpc and will require json in request body___
