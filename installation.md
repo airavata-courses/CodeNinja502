@@ -32,5 +32,4 @@ Requirements: Go and plugins
  - Run following commands:
   go build <br />
   go run "main.go" <br />
-  
- ____upload service will run on port 8082. Can be accessed by localhost:8082/rpc and will require json in request body___
+ - upload service will run on port 8082. Can be accessed by localhost:8082/rpc and will require json in request body
