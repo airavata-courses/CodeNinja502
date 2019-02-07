@@ -1,5 +1,8 @@
 ## Install and Run "ProjectHUB"
 
+> git clone https://github.com/airavata-courses/CodeNinja502.git
+> git checkout Assignment-1
+
 ### Fetch Microservice
 
 #### Steps to Run "Fetch Microservice"
@@ -33,3 +36,20 @@ Requirements: Go and plugins
   go build <br />
   go run "main.go" <br />
  - upload service will run on port 8082. Can be accessed by localhost:8082/rpc and will require json in request body
+
+### Install and Run Cloud Image Upload Service and Login service
+Prerequisites:
+	* Node.js
+	* npm
+	* Check for reference : https://www.npmjs.com/get-npm
+
+Open a new tab in command prompt / terminal
+> cd <directory where repo was cloned>/project-hub/website/backend/
+> npm install
+> nodemon app
+
+### Install and Run React Frontend
+Open a new tab in command prompt / terminal
+> cd <directory where repo was cloned>/project-hub/website/backend/
+> npm install
+> npm start
