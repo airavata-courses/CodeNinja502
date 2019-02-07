@@ -46,7 +46,7 @@ export default class FeedExampleEventsProp extends React.Component {
         }
         event['image'] = avarat_url;
 
-        feed_data.push(event);
+        feed_data.unshift(event);
       }
       // console.log(feed_data);
       this.setState({

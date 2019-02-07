@@ -44,15 +44,18 @@ class ReactUploadImage extends React.Component {
             if(res.status == 200){
               this.setState({
                 img_url : res.data.secure_url,
-              });
+              }, ()=>{
+                this.createPost();
+              }
+              );
 
             }
           })
 
     }  
 
-     createPost(e){
-        e.preventDefault();
+     createPost(){
+        //e.preventDefault();
         var copyOptions = '';
         var i=0;
         for (i=0; i<this.state.aois.length; i++){
@@ -67,18 +70,17 @@ class ReactUploadImage extends React.Component {
                     "userid": this.state.email,
                     "typeofmedia" :"picture",
                     "date": Date.now().toString(),
-        
                 }
               
         console.log(feed_post);
         axios.post(CREATE_POST_URL, feed_post).
                     then(function(response){
                         console.log(response);
-
                     })
                     .catch(function(errors){
                         console.log(errors);
                     })
+        window.location.reload();
                 
     }
 
@@ -90,7 +92,6 @@ class ReactUploadImage extends React.Component {
         }
         else{
             this.setState({
-                
                 email: nextProps.email,
                 aois: nextProps.aois,
                 content:nextProps.content
@@ -101,8 +102,7 @@ class ReactUploadImage extends React.Component {
         return (
             <form onSubmit={this.createPost}>
                 <input type="file" name="myImage" className="btn" onChange={this.handleselectedFile} />
-                <button type="button" onClick={this.handleUpload} className="btn btn-primary" style={{display:'block', marginBottom:'4px'}}>Upload</button>
-                <button type="submit" className="btn btn-primary"> Create Post </button>
+                <button type="button" onClick={this.handleUpload} className="btn btn-primary" style={{display:'block', marginTop:'4px'}}>Create Post</button>
             </form>
         )
     }
