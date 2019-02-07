@@ -20,10 +20,10 @@ Requirements: Go and plugins
 	Refer: https://golang.org/doc/install
  - Setup environmental variables for Go as referred in https://golang.org/doc/install
  - Verify by going to cmd(windows), terminal(linux,mac) by typing 'go' command.
- - Run following commands-
- go get "github.com/gorilla/mux"
- go get "github.com/mongodb/mongo-go-driver/mongo"
- go get "github.com/mongodb/mongo-go-driver/bson"
+ - Run following commands- <br />
+ go get "github.com/gorilla/mux" <br />
+ go get "github.com/mongodb/mongo-go-driver/mongo" <br />
+ go get "github.com/mongodb/mongo-go-driver/bson" <br />
  
  - In cmd/terminal, go to the folder where main.go is located.
  - Run following commands:
