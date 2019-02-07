@@ -4,8 +4,8 @@
 
 #### Steps to Run "Fetch Microservice"
 
-Requirements: Java and Maven
- - Download Java, JDK and JRE from:
+Requirements: Java, JDK, JRE
+ - Download Java, JDK and JRE (if not already installed on your system) from:
    - https://www.oracle.com/technetwork/java/javase/downloads/index.html and 
    - https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
  - Download the file corresponding to your operating system and run it. Install both JDK and JRE. You can install in any order.
