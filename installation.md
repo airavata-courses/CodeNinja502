@@ -28,14 +28,15 @@ Requirements: Go and plugins
  - Setup environmental variables for Go as referred in https://golang.org/doc/install
  - Verify by going to cmd(windows), terminal(linux,mac) by typing 'go' command.
  - Run following commands- <br />
- go get "github.com/gorilla/mux" <br />
- go get "github.com/mongodb/mongo-go-driver/mongo" <br />
- go get "github.com/mongodb/mongo-go-driver/bson" <br />
+ > `go get "github.com/gorilla/mux"` <br />
+ 
+ > `go get "github.com/mongodb/mongo-go-driver/mongo"` <br />
+ > `go get "github.com/mongodb/mongo-go-driver/bson"` <br />
  
  - In cmd/terminal, go to the folder "uploadService" where main.go is located.
  - Run following commands:
-  go build <br />
-  go run "main.go" <br />
+>  `go build` <br />
+>  `go run "main.go"` <br />
  - upload service will run on port 8082. Can be accessed by localhost:8082/rpc and will require json in request body
 
 ### Install and Run Cloud Image Upload Service and Login service
