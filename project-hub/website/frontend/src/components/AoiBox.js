@@ -12,10 +12,10 @@ export default class AoiBox extends Component{
 	render(){
 		return(
 			<Select
-                options={options} 
-                isMulti
-                onChange={ this.props.onChange } 
-            />
+          options={options} 
+          isMulti
+          onChange={ this.props.onChange } 
+      />
 			);
 	}
 

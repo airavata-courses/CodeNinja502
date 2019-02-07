@@ -3,11 +3,9 @@ import { loginUser } from '../actions/authentication';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AoiBox from './AoiBox';
-//import {cloudinary} from 'cloudinary-react';
-import ReactCloudinaryUploader from '@app-masters/react-cloudinary-uploader';
 import ReactUploadImage from './ReactUploadImage';
 
-const txt_ph = "Describe yout project";
+const txt_ph = "Describe your project";
 
 export default class CreatePost extends Component {
 
@@ -48,13 +46,11 @@ export default class CreatePost extends Component {
         }
     }
 
-    add_image_url(e){
 
-    }
     render() {
         return (
-            <div style={{padding:'10px'}} class="bg-light">
-	            <form  id="create_post">
+            <div style={{padding:'10px'}} className="bg-light">
+	            <div  id="create_post">
 	            	<div className="form-group">
                     	<textarea value={this.state.content} 
                     	name="content" 
@@ -70,12 +66,7 @@ export default class CreatePost extends Component {
                     	value={this.state.aois} />
                 	</div>
             		<ReactUploadImage content={this.state.content} email={this.state.email} aois={this.state.aois}/>
-	             	{/*<div className="form-group">
-	                    <button type="submit" className="btn btn-primary">
-	                        Create Post
-	                    </button>
-            		</div> */}
-	            </form>
+	            </div>
 
 
             </div>

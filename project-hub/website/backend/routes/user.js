@@ -1,3 +1,4 @@
+const User = require('../models/User');
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
@@ -7,10 +8,8 @@ const passport = require('passport');
 const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login');
 
-const User = require('../models/User');
 
 router.post('/register', function(req, res) {
-console.log(req);
 
     const { errors, isValid } = validateRegisterInput(req.body);
 
