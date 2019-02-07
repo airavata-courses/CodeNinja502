@@ -1,7 +1,7 @@
 ## Install and Run "ProjectHUB"
 
-> git clone https://github.com/airavata-courses/CodeNinja502.git
-> git checkout Assignment-1
+> `git clone https://github.com/airavata-courses/CodeNinja502.git`
+> `git checkout Assignment-1`
 
 ### Fetch Microservice
 
@@ -44,12 +44,12 @@ Prerequisites:
 	* Check for reference : https://www.npmjs.com/get-npm
 
 Open a new tab in command prompt / terminal
-> cd <directory where repo was cloned>/project-hub/website/backend/
-> npm install
-> nodemon app
+> `cd <directory where repo was cloned>/project-hub/website/backend/`
+> `npm install`
+> `nodemon app`
 
 ### Install and Run React Frontend
 Open a new tab in command prompt / terminal
-> cd <directory where repo was cloned>/project-hub/website/backend/
-> npm install
-> npm start
+> `cd <directory where repo was cloned>/project-hub/website/backend/`
+> `npm install`
+> `npm start`
