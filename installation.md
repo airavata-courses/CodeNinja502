@@ -25,9 +25,9 @@ Requirements: Go and plugins
  go get "github.com/mongodb/mongo-go-driver/mongo" <br />
  go get "github.com/mongodb/mongo-go-driver/bson" <br />
  
- - In cmd/terminal, go to the folder where main.go is located.
+ - In cmd/terminal, go to the folder "uploadService" where main.go is located.
  - Run following commands:
-  go build
-  go run "main.go"
+  go build <br />
+  go run "main.go" <br />
   
  ____upload service will run on port 8082. Can be accessed by localhost:8082/rpc and will require json in request body___
