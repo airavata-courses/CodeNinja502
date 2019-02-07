@@ -50,11 +50,14 @@ Open a new tab in command prompt / terminal
 
 > `npm install`
 
+> `npm install nodemon -g`
+
 > `nodemon app`
 
 ### Install and Run React Frontend
 Open a new tab in command prompt / terminal
-> `cd <directory where repo was cloned>/project-hub/website/backend/`
+> `cd <directory where repo was cloned>/project-hub/website/frontend/`
 
 > `npm install`
+
 > `npm start`
