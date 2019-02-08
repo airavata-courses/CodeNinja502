@@ -19,7 +19,6 @@ public class MediaRepository{
 		DB db = client.getDB( "MediaDB" );
 		DBCollection collection = db.getCollection("media");
 
-
 		DBCursor iterDoc = collection.find(); 
 		Iterator<?> it = iterDoc.iterator(); 
 		
