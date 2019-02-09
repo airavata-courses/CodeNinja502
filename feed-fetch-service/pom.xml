@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.sga.microservice</groupId>
 	<artifactId>feed-fetch-service</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<name>feed-fetch-service</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -20,6 +20,20 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.ocpsoft.prettytime</groupId>
+			<artifactId>prettytime</artifactId>
+			<version>4.0.1.Final</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
