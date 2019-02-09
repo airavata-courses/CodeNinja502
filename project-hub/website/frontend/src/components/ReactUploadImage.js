@@ -31,11 +31,10 @@ class ReactUploadImage extends React.Component {
     handleUpload = (e) => {
         const data = new FormData()
         data.append('file', this.state.selectedFile)
-        console.log('handleupload>>>>');
         if (! (this.state.selectedFile == null ))
         {
             if (! this.state.selectedFile.name == '')
-            { console.log("uploading file");
+            { 
                 axios
                   .post('http://localhost:5000/upload/upload', data, {
                     onUploadProgress: ProgressEvent => {
@@ -45,7 +44,6 @@ class ReactUploadImage extends React.Component {
                     },
                   })
                   .then(res => {
-                    console.log(res)
                     if(res.status == 200){
                       this.setState({
                         img_url : res.data.secure_url,
@@ -64,7 +62,6 @@ class ReactUploadImage extends React.Component {
             }
         }
         else{
-            console.log("not uploading file");
 
             this.createPost();  
         }
@@ -92,10 +89,8 @@ class ReactUploadImage extends React.Component {
         if( this.state.content == ''){
             window.alert('Please provide the project description');
         }else{
-            console.log(feed_post);
             axios.post(CREATE_POST_URL, feed_post).
                         then(function(response){
-                            console.log(response);
                         })
                         .catch(function(errors){
                             console.log(errors);

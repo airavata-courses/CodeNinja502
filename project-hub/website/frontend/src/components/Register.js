@@ -45,7 +45,6 @@ class Register extends Component {
         for (i=0; i<this.state.selectedOption.length; i++){
             copyOptions.push(this.state.selectedOption[i]['value']);
         }
-        console.log(copyOptions);
         const user = {
             name: this.state.name,
             email: this.state.email,

@@ -14,7 +14,6 @@ class Home extends Component {
         }
     }
 	componentDidMount() {
-        console.log(this.props.auth.user)
         
         if(!this.props.auth.isAuthenticated) {
             this.props.history.push('/login');

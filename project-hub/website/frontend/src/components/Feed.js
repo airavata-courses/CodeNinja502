@@ -20,7 +20,6 @@ export default class FeedExampleEventsProp extends React.Component {
     }
     parse_json(){
       var response = this.state.resp
-      console.log(response);
       var feed_data = []
       var i;
       for(i=0; i<response.length; i++){
@@ -37,7 +36,13 @@ export default class FeedExampleEventsProp extends React.Component {
               event['summary'] = response[i][data] + " shared this post:";
               break;
             case "aoi":
-              event['meta'] = response[i][data];
+              var temp = response[i][data].split(';');
+              var str = '';
+              var substr = '';
+              for (substr in temp){
+                str += temp[substr].toUpperCase() + " "
+              }
+              event['meta'] = str;
               break;
             case "description":
               event['extraText'] = response[i][data];
