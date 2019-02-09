@@ -1,6 +1,6 @@
 import React from 'react';
 import qs from 'qs';
-
+import GET_ERRORS from '../actions/types';
 const CREATE_POST_URL ='http://localhost:8082/rpc';
 
 const axios = require("axios");
@@ -14,7 +14,8 @@ class ReactUploadImage extends React.Component {
             email:'',
             aois:'',
             content:'',
-            img_url:''
+            img_url:'',
+            selectedFile : null
         };
         this.handleUpload = this.handleUpload.bind(this);
         this.createPost = this.createPost.bind(this);
@@ -30,26 +31,43 @@ class ReactUploadImage extends React.Component {
     handleUpload = (e) => {
         const data = new FormData()
         data.append('file', this.state.selectedFile)
-        
-        axios
-          .post('http://localhost:5000/upload/upload', data, {
-            onUploadProgress: ProgressEvent => {
-              this.setState({
-                loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
-              })
-            },
-          })
-          .then(res => {
-            console.log(res)
-            if(res.status == 200){
-              this.setState({
-                img_url : res.data.secure_url,
-              }, ()=>{
-                this.createPost();
-              }
-              );
+        console.log('handleupload>>>>');
+        if (! (this.state.selectedFile == null ))
+        {
+            if (! this.state.selectedFile.name == '')
+            { console.log("uploading file");
+                axios
+                  .post('http://localhost:5000/upload/upload', data, {
+                    onUploadProgress: ProgressEvent => {
+                      this.setState({
+                        loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
+                      })
+                    },
+                  })
+                  .then(res => {
+                    console.log(res)
+                    if(res.status == 200){
+                      this.setState({
+                        img_url : res.data.secure_url,
+                      }, ()=>{
+                        this.createPost();
+                      }
+                      );
+                    }
+                  }).catch(err =>{
+                    this.setState({
+                        errors : err.response.data.image
+                    }, () =>{
+                        window.alert(this.state.errors);
+                    })
+                  })
             }
-          })
+        }
+        else{
+            console.log("not uploading file");
+
+            this.createPost();  
+        }
 
     }  
 
@@ -71,16 +89,19 @@ class ReactUploadImage extends React.Component {
                     "date": Date.now().toString(),
         
                 }
-              
-        console.log(feed_post);
-        axios.post(CREATE_POST_URL, feed_post).
-                    then(function(response){
-                        console.log(response);
-                    })
-                    .catch(function(errors){
-                        console.log(errors);
-                    })
-        window.location.reload();
+        if( this.state.content == ''){
+            window.alert('Please provide the project description');
+        }else{
+            console.log(feed_post);
+            axios.post(CREATE_POST_URL, feed_post).
+                        then(function(response){
+                            console.log(response);
+                        })
+                        .catch(function(errors){
+                            console.log(errors);
+                        })
+              window.location.reload();
+        }
     }
 
     componentWillReceiveProps(nextProps) {

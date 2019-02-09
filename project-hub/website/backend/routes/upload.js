@@ -2,6 +2,8 @@ const path = require("path");
 const express = require('express');
 const multiparty = require('multiparty');
 const fs = require('fs');
+const validateImageType = require('../validation/image');
+
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var cloudinary = require('cloudinary');
@@ -31,7 +33,13 @@ const storage = multer.diskStorage({
 
 router.post('/upload', multipartMiddleware, function(req, res) {
    img_path = req.files.file.path;
+   const { errors, isValid } = validateImageType(img_path);
+   console.log(errors);
+   console.log(isValid);
+   if (!isValid){
 
+    return res.status(400).json(errors);
+   }
    cloudinary.v2.uploader.upload(img_path,
       function(error, result) {
          if (error){
@@ -49,6 +57,7 @@ router.post('/upload', multipartMiddleware, function(req, res) {
       });
 
 });
+
 
 
 
