@@ -1,12 +1,20 @@
 package com.sga.microservice.feedfetchservice;
 
+
+import java.util.Calendar;
+
 import java.util.Iterator;
+
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import org.apache.commons.lang3.StringUtils;
+import org.ocpsoft.prettytime.PrettyTime;
+
 
 public class MediaRepository{
 	public MediaRepository() {}
@@ -19,18 +27,31 @@ public class MediaRepository{
 		DB db = client.getDB( "MediaDB" );
 		DBCollection collection = db.getCollection("media");
 
-
 		DBCursor iterDoc = collection.find(); 
 		Iterator<?> it = iterDoc.iterator(); 
-		
+
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");
 		while (it.hasNext())
 		{  
-			BasicDBObject obj=new BasicDBObject();
+			BasicDBObject obj;
 			obj = (BasicDBObject) it.next();
 
 			String a = obj.toJson();
+			String datetemp=StringUtils.substringBetween(a,"\"date\" : \"","\"");
+			long epoch = Long.parseLong( datetemp );
+
+
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTimeInMillis(epoch);
+
+
+			PrettyTime p = new PrettyTime();
+
+			a=StringUtils.replacePattern(a,"[1-9][0-9]{11,20}",p.format(calendar));
+
+
+
 			sb.append(a);
 			sb.append(",");
 		}
