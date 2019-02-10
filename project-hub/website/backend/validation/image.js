@@ -9,16 +9,15 @@ module.exports = function validateImageType(imgPath) {
     if(Validator.isEmpty(imgPath)) {
         errors.image = 'Field Empty';
     }
+    var includes = false
 	for (str in img_types){
-		var includes = false
+		var previous = includes
 		//console.log(imgPath.substring(imgPath.length - 5, imgPath.length).toUpperCase().includes(img_types[str]));
-		includes = includes || (imgPath
+		includes = previous || (imgPath
 		.substring(imgPath.length - 5, imgPath.length)
 		.toUpperCase()
 		.includes(img_types[str]))
 
-		console.log(includes)
-			
 		}
 	if (!includes){
 		errors.image = "This is not an image file. Please include a image file";

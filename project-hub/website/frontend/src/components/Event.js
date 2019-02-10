@@ -7,7 +7,6 @@ export default class Event extends React.Component{
 
 
     render(){
-    	console.log(this.props)
     	return(
 
     			<Feed.Event className='bg-light rounded' style={{'margin-bottom':'5px', 'padding': '20px'}}>
