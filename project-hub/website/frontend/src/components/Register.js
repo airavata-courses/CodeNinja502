@@ -62,6 +62,13 @@ class Register extends Component {
             this.props.history.push('/');
         }
     }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
 
     render() {
         const { errors } = this.state;
