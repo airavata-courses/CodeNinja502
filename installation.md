@@ -4,6 +4,8 @@
 
 > `git checkout Assignment-1`
 
+> `git pull`
+
 ## Fetch Microservice
 
 #### Steps to Run "Fetch Microservice"
