@@ -30,7 +30,7 @@ public class MediaRepository {
 
 	public String getURLS() {
 		String res = null;
-		final String PATH = "login.xml";// "src/main/resources/config/login.xml";
+		final String PATH = "login.xml";
 		final File fXmlFile = new File(PATH);
 		if (fXmlFile.exists()) {
 			final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
