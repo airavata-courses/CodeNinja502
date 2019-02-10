@@ -49,7 +49,7 @@ export default class CreatePost extends Component {
 
     render() {
         return (
-            <div style={{padding:'10px'}} className="bg-light">
+            <div style={{padding:'20px'}} className="bg-light rounded">
 	            <div  id="create_post">
 	            	<div className="form-group">
                     	<textarea value={this.state.content} 
