@@ -1,10 +1,10 @@
-## Install and Run "ProjectHUB"
+# Install and Run "ProjectHUB"
 
 > `git clone https://github.com/airavata-courses/CodeNinja502.git`
 
 > `git checkout Assignment-1`
 
-### Fetch Microservice
+## Fetch Microservice
 
 #### Steps to Run "Fetch Microservice"
 
@@ -19,7 +19,7 @@ Requirements: Java, JDK, JRE
  #### Thank you.
 
 
-### Upload Service - This service is used to upload information about posts to MongoDB
+## Upload Service - This service is used to upload information about posts to MongoDB
 
 Requirements: Go and plugins
 
@@ -39,7 +39,7 @@ Requirements: Go and plugins
 >  `go run "main.go"` <br />
  - upload service will run on port 8082. Can be accessed by localhost:8082/rpc and will require json in request body
 
-### Install and Run Cloud Image Upload Service and Login service
+## Install and Run Cloud Image Upload Service and Login service
 Prerequisites:
 	* Node.js
 	* npm
@@ -54,7 +54,7 @@ Open a new tab in command prompt / terminal
 
 > `nodemon app`
 
-### Install and Run React Frontend
+## Install and Run React Frontend
 Open a new tab in command prompt / terminal
 > `cd <directory where repo was cloned>/project-hub/website/frontend/`
 
