@@ -76,7 +76,7 @@ func PostToDB(w http.ResponseWriter, r *http.Request) {
 	}
 
 	mongoctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	client, _ := mongo.Connect(mongoctx, "mongodb://projecthub:uScHiw5Ahp7OSthjECegyWBi4iV0NdiuqOgTOLLYrysbZIvQ4Uh0XuGpJaCsOLWTNpsd2Czrb0xWduOTOF06Og==@projecthub.documents.azure.com:10255/?ssl=true")
+	client, _ := mongo.Connect(mongoctx, "mongodb://projecthub1:L03TY9pAulwt6t85yGoPNracwgXgJnWiIfHBKEndePbPGibBK5CZ0e2Y9qMpqiILWz8XHfSxO6hpOTUfXXvHbQ==@projecthub1.documents.azure.com:10255/?ssl=true")
 
 	//for accessing media and counter collections
 	collection := client.Database("MediaDB").Collection("media")
