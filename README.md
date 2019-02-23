@@ -1,3 +1,3 @@
 # CodeNinja502
-## A Spring Boot Microservice to fetch posts by user.
-## Technologies Used: Java, SpringBoot, MongoDB
+### A Spring Boot Microservice to fetch all relevant posts by user.
+### Technologies Used: Java, SpringBoot, MongoDB, Jenkins
