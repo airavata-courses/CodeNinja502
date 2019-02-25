@@ -15,7 +15,7 @@ Requirements: Java, JDK, JRE
    - https://www.oracle.com/technetwork/java/javase/downloads/index.html and 
    - https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
  - Download the file corresponding to your operating system and run it. Install both JDK and JRE. You can install in any order.
- - Download the file "feed-fetch-service-0.0.7.jar" from https://github.com/airavata-courses/CodeNinja502/tree/Assignment-1 .
+ - Download the file "feed-fetch-service-0.0.7.jar" from https://github.com/airavata-courses/CodeNinja502/tree/dev-fetch-service .
  - In order to run this service you need to have a login credential file which is not provided on the GitHub, you need to ask one of us for that file.
  - Place the JAR and the "login.xml" file in same location and then run JAR. Wait for a minute and then test the service.
  - If your OS doesn't allow to run the above JAR file, please change settings of your OS to allow and run software from unidentified sources.
