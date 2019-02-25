@@ -10,8 +10,12 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	bson "github.com/mongodb/mongo-go-driver/bson"
-	mongo "github.com/mongodb/mongo-go-driver/mongo"
+	//bson "github.com/mongodb/mongo-go-driver/bson"
+
+	bson "go.mongodb.org/mongo-driver/bson"
+	//mongo "github.com/mongodb/mongo-go-driver/mongo"
+	mongo "go.mongodb.org/mongo-driver/mongo"
+	options "go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type Request struct {
@@ -76,7 +80,8 @@ func PostToDB(w http.ResponseWriter, r *http.Request) {
 	}
 
 	mongoctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	client, _ := mongo.Connect(mongoctx, "mongodb://projecthub1:L03TY9pAulwt6t85yGoPNracwgXgJnWiIfHBKEndePbPGibBK5CZ0e2Y9qMpqiILWz8XHfSxO6hpOTUfXXvHbQ==@projecthub1.documents.azure.com:10255/?ssl=true")
+	//client, _ := mongo.Connect(mongoctx, "mongodb://projecthub1:L03TY9pAulwt6t85yGoPNracwgXgJnWiIfHBKEndePbPGibBK5CZ0e2Y9qMpqiILWz8XHfSxO6hpOTUfXXvHbQ==@projecthub1.documents.azure.com:10255/?ssl=true")
+	client, _ := mongo.NewClient(options.Client().ApplyURI("mongodb://projecthub1:L03TY9pAulwt6t85yGoPNracwgXgJnWiIfHBKEndePbPGibBK5CZ0e2Y9qMpqiILWz8XHfSxO6hpOTUfXXvHbQ==@projecthub1.documents.azure.com:10255/?ssl=true"))
 
 	//for accessing media and counter collections
 	collection := client.Database("MediaDB").Collection("media")
