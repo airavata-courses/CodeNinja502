@@ -34,8 +34,8 @@ Requirements: Go and plugins
  - Run following commands- <br />
  > `go get "github.com/gorilla/mux"` <br />
  
- > `go get "github.com/mongodb/mongo-go-driver/mongo"` <br />
- > `go get "github.com/mongodb/mongo-go-driver/bson"` <br />
+ > `go get "go.mongodb.org/mongo-driver/mongo"` <br />
+ > `go get "go.mongodb.org/mongo-driver/bson"` <br />
  
  - In cmd/terminal, go to the folder "uploadService" where main.go is located.
  - Run following commands:
