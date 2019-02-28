@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sga.microservice</groupId>
 	<artifactId>feed-fetch-service</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>0.0.5</version>
 	<name>feed-fetch-service</name>
 	
