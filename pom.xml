@@ -43,13 +43,13 @@
 				<plugin>
                     			<groupId>org.apache.maven.plugins</groupId>
                     			<artifactId>maven-pmd-plugin</artifactId>
-                    			<version>4.0.0</version>
+                    			<version>3.4</version>
                 		</plugin>
                 
 				<plugin>
                     			<groupId>org.apache.maven.plugins</groupId>
                     			<artifactId>maven-checkstyle-plugin</artifactId>
-                    			<version>4.0.0</version>
+                    			<version>3.4</version>
                 		</plugin>
 				    
 	       			<plugin>
