@@ -14,11 +14,26 @@ import (
 
 	"github.com/gorilla/mux"
 
+	consulapi "github.com/hashicorp/consul/api"
 	bson "go.mongodb.org/mongo-driver/bson"
 	mongo "go.mongodb.org/mongo-driver/mongo"
 	options "go.mongodb.org/mongo-driver/mongo/options"
 )
 
+type Check struct {
+	Ttl      string `json:"TTL,omitempty"`
+	Http     string `json:"HTTP,omitempty"`
+	Interval string `json:"Interval,omitempty"`
+	Script   string `json:"Script,omitempty"`
+}
+
+// type Service struct {
+// 	Name        string
+// 	Port        int
+// 	ID          string
+// 	ConsulAgent *consul.Agent
+// 	Check       *Check
+// }
 type db struct {
 	Cred mediaDB `xml:db`
 }
@@ -169,6 +184,25 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/rpc", Preflight).Methods("OPTIONS")
 	router.HandleFunc("/rpc", PostToDB).Methods("POST")
+	router.HandleFunc("/rpc", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "HealthCheck", r.URL.Path)
+	})
+
+	//////////////Consul Registration/////////////////
+	config := consulapi.DefaultConfig()
+	consul, _ := consulapi.NewClient(config)
+	registration := new(consulapi.AgentServiceRegistration)
+	registration.Name = "goService"
+	registration.Port = 8082
+	registration.Check = new(consulapi.AgentServiceCheck)
+	registration.Check.HTTP = "http://localhost:8082/rpc"
+	registration.Check.Interval = "5s"
+
+	registration.Check.DeregisterCriticalServiceAfter = "5s"
+
+	consul.Agent().ServiceRegister(registration)
+
+	////////////////////////////////
 
 	fmt.Println("[RecoEngine] Starting Go Server at 8082...")
 	log.Fatal(http.ListenAndServe(":8082", router))
