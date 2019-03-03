@@ -1,7 +1,7 @@
 import React from 'react';
 import qs from 'qs';
 import GET_ERRORS from '../actions/types';
-const CREATE_POST_URL ='http://149.165.156.133:8082/rpc';
+const CREATE_POST_URL ='http://149.165.168.115:5000/rpc';
 
 const axios = require("axios");
 
@@ -34,7 +34,8 @@ class ReactUploadImage extends React.Component {
         if (! (this.state.selectedFile == null ))
         {
             if (! this.state.selectedFile.name == '')
-            { 
+            {
+		    console.log(data + this.state.selectedFile)
                 axios
                   .post('http://149.165.170.76:5000/upload/upload', data, {
                     onUploadProgress: ProgressEvent => {
