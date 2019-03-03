@@ -14,6 +14,7 @@ router.post('/upload/upload', function(req, res) {
 		res.status(400).json(error);
 	})
 })
+
 router.post('/api/users/register', function(req, res) {
   axios.post('http://localhost:5000/api/users/register', req)
 	.then((response)=>{
@@ -22,6 +23,7 @@ router.post('/api/users/register', function(req, res) {
 		res.status(400).json(error);
 	})
 })
+
 router.post('/api/users/login', (req, res) => {
   axios.post('http://localhost:5000/api/users/login', req)
         .then((response)=>{
@@ -30,6 +32,7 @@ router.post('/api/users/login', (req, res) => {
                 res.status(400).json(error);
         })
 })
+
 router.post('/rpc',(req, res) => {
   axios.post('http://localhost:8082/rpc', req)
         .then((response)=>{
