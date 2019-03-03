@@ -14,7 +14,7 @@ var multipartMiddleware = multipart();
 
 app.post('/api/users/register', function(req, res) {
 	console.log(req.body);
-  axios.post('http://149.165.170.76:5000/api/users/register', req.body)
+  axios.post('http://login_service.service.consul:5000/api/users/register', req.body)
 	.then((response)=>{
 		//console.log(response)
 		res.json(response.data);
@@ -27,7 +27,7 @@ app.post('/api/users/register', function(req, res) {
 
 app.post('/api/users/login', (req, res) => {
 	console.log(req.body);
-  axios.post('http://149.165.170.76:5000/api/users/login', req.body)
+  axios.post('http://login_service.service.consul:5000/api/users/login', req.body)
         .then((response)=>{
 		//console.log(response.body);
                 res.json(response.data);
@@ -39,7 +39,7 @@ app.post('/api/users/login', (req, res) => {
 })
 
 app.post('/rpc',(req, res) => {
-  axios.post('http://149.165.156.133:8082/rpc', req.body)
+  axios.post('http://goService.service.consul:8082/rpc', req.body)
         .then((response)=>{
                 res.json(response.data);
         }).catch((error)=> {
@@ -50,7 +50,7 @@ app.get('/', function(req, res) {
     res.send('hello');
 });
 app.get('/getLinks',(req, res) => {
-  axios.get('http://149.165.169.156:9090/getLinks')
+  axios.get('http://fetchservice.service.consul:9090/getLinks')
 	.then((response) => {
 		res.json(response.data)
 	}).catch((error)=> {
