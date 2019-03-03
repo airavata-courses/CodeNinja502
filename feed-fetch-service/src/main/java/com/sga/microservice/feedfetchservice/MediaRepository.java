@@ -14,7 +14,10 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 
 public class MediaRepository {
-	public MediaRepository() {
+	
+	public MediaRepository() 
+	{
+		
 	}
 
 	public String getURLS() {
