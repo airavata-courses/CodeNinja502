@@ -24,5 +24,11 @@ pipeline {
                build 'fetch_service_2_ci'
             }
         }
+	    
+       stage('Deploy Fetch Service') {
+            steps {
+               build 'deploy-feed-fetch-service'
+            }
+        }
     }
 }
