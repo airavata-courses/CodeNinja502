@@ -3,7 +3,6 @@ package com.sga.microservice.feedfetchservice;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -24,12 +23,12 @@ public class FeedFetchServiceApplicationTests {
 	private MockMvc mockMvc;
 
 	@MockBean
-	private MediaController mc;
+	private final MediaController mc = new MediaController();
 
 	@Test
 	public void contextLoads() {
 
-		when(mc.getAllURLS()).thenReturn(toString());
+		// when(mc.getAllURLS()).thenReturn(toString());
 
 		try {
 			final MvcResult res = (MvcResult) mockMvc.perform(MockMvcRequestBuilders.get("/getLinks"))
