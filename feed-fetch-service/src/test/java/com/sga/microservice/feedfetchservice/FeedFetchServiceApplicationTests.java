@@ -30,9 +30,9 @@ public class FeedFetchServiceApplicationTests {
 
 		final RestTemplate restTemplate = new RestTemplate();
 		// tweetRepository.save(tweet);
-		final String baseUrl = "http://localhost:" + port + "/getLinks";
+		final String baseUrl = "http://149.165.169.156:9090/getLinks";
 
-		final ResponseEntity<String> result = restTemplate.postForEntity(baseUrl, null, String.class);
+		final ResponseEntity<String> result = restTemplate.getForEntity(baseUrl, String.class);
 		System.out.println(result.getBody());
 		Assert.assertEquals(200, result.getStatusCodeValue());
 
