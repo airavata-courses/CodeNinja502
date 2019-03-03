@@ -14,11 +14,6 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FeedFetchServiceApplicationTests {
 
-	// private MockMvc mockMvc;
-
-	// @MockBean
-	// private final MediaController mc = new MediaController();
-
 	@Autowired
 	MediaController mc;
 
@@ -35,18 +30,6 @@ public class FeedFetchServiceApplicationTests {
 		final ResponseEntity<String> result = restTemplate.getForEntity(baseUrl, String.class);
 		System.out.println(result.getBody());
 		Assert.assertEquals(200, result.getStatusCodeValue());
-
-		/*
-		 * when(mc.getAllURLS()).thenReturn(toString());
-		 *
-		 * try { final MvcResult res = (MvcResult)
-		 * mockMvc.perform(MockMvcRequestBuilders.get("/getLinks"))
-		 * .andExpect(content().contentType(MediaType.APPLICATION_JSON));
-		 * System.out.println(res.getResponse()); } catch (final Exception e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 *
-		 * verify(mc, times(1)).getAllURLS(); verifyNoMoreInteractions(mc);
-		 */
 	}
 
 }
