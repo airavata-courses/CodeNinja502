@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./db');
 const cors = require("cors");
-
+var consul = require("consul")();
 require('./models/User');
 
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -31,7 +31,18 @@ app.use('/upload',upload);
 app.get('/', function(req, res) {
     res.send('hello');
 });
-
+let details = {
+	name: 'login_service',
+	address : '',
+	check:{
+		http : 'http://localhost:5000',
+		interval: '10s',
+		deregistercriticalserviceafter:'1m'
+	}
+};
+consul.agent.service.register(details, function(err){
+	if(err) throw err;
+})
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on PORT ${PORT}`);
