@@ -4,7 +4,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +31,7 @@ public class FeedFetchServiceApplicationTests {
 
 		try {
 			final MvcResult res = (MvcResult) mockMvc.perform(MockMvcRequestBuilders.get("/getLinks"))
-					.andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON));
+					.andExpect(content().contentType(MediaType.APPLICATION_JSON));
 			System.out.println(res.getResponse());
 		} catch (final Exception e) {
 			// TODO Auto-generated catch block
