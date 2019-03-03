@@ -17,4 +17,7 @@ public class MediaController {
 		return repository.getURLS();
 	}
 
+	@CrossOrigin(origins="*")
+	@RequestMapping(value="/health",method=RequestMethod.GET)
+	public String health(){return "working fine";}
 }
