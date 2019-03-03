@@ -203,7 +203,7 @@ func main() {
 	consul.Agent().ServiceRegister(registration)
 
 	////////////////////////////////
-
+	// Testing webhook and jenkins
 	fmt.Println("[RecoEngine] Starting Go Server at 8082...")
 	log.Fatal(http.ListenAndServe(":8082", router))
 
