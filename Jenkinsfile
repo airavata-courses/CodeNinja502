@@ -1,20 +1,28 @@
-pipeline{
-	agent any
-	stages{
-		stage('Build'){
-			steps{
-				sh 'cd ./feed-fetch-service && mvn -B -DskipTests clean package'
-			}
-		}	
-		stage('Test'){
-			steps{
-				sh 'cd ./feed-fetch-service && mvn test'
-			}
-		}
-		stage('Deploy'){
-			steps{
-				build 'deploy-feed-fetch-service'
-			}
-		}
-	}
+pipeline {
+    agent any
+
+    stages 
+    {
+	stage('Building Frontend') {
+            steps {
+                build 'frontend'
+            }
+        }
+	stage('Building Login Service') {
+            steps {
+                build 'login_service'
+            }
+        }
+        stage ('Building Upload Service') {
+            steps {
+                build 'go_basic'
+            }
+        }
+
+        stage('Building Fetch Service') {
+            steps {
+               build 'fetch_service_2_ci'
+            }
+        }
+    }
 }
