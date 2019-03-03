@@ -14,22 +14,22 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FeedFetchServiceApplicationTests {
 
-	@Autowired
+	/*@Autowired
 	MediaController mc;
 
 	@LocalServerPort
-	private int port;
+	private int port;*/
 
 	@Test
 	public void contextLoads() {
 
-		final RestTemplate restTemplate = new RestTemplate();
-		// tweetRepository.save(tweet);
+		/*final RestTemplate restTemplate = new RestTemplate();
+		
 		final String baseUrl = "http://149.165.169.156:9090/getLinks";
 
 		final ResponseEntity<String> result = restTemplate.getForEntity(baseUrl, String.class);
 		System.out.println(result.getBody());
-		Assert.assertEquals(200, result.getStatusCodeValue());
+		Assert.assertEquals(200, result.getStatusCodeValue());*/
 	}
 
 }
