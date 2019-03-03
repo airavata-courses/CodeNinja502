@@ -3,13 +3,15 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"encoding/xml"
+
+	//      "encoding/xml"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
-	"runtime"
+
+	//      "os"
+	//      "runtime"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -27,13 +29,6 @@ type Check struct {
 	Script   string `json:"Script,omitempty"`
 }
 
-// type Service struct {
-// 	Name        string
-// 	Port        int
-// 	ID          string
-// 	ConsulAgent *consul.Agent
-// 	Check       *Check
-// }
 type db struct {
 	Cred mediaDB `xml:db`
 }
@@ -115,29 +110,47 @@ func PostToDB(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	mongoctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	//_, filename, _, _ := runtime.Caller(0)
+	//filename = filename[:len(filename)-7]
+	//xmlFile, errc := os.Open(filename + "login.xml")
 
-	_, filename, _, _ := runtime.Caller(0)
-	filename = filename[:len(filename)-7]
-	xmlFile, errc := os.Open(filename + "login.xml")
-
-	if errc != nil {
-		log.Fatal(errc)
-	}
-
-	b, _ = ioutil.ReadAll(xmlFile)
-	defer xmlFile.Close()
-
-	var c db
-	xml.Unmarshal(b, &c.Cred)
+	//if errc != nil {
+	//      log.Fatal(errc)
 
 	var uri string
-	//uri = "mongodb://" + c.Cred.Username + ":" + c.Cred.Password + "@projecthub.documents.azure.com:10255/?ssl=true"
-	uri = "mongodb://" + c.Cred.Med.usernamepassword + "@" + c.Cred.Med.server + "ssl=true"
-	//client, _ := mongo.Connect(mongoctx, uri)
 
-	client, _ := mongo.NewClient(options.Client().ApplyURI(uri))
+	//uri2 := "mongodb://projecthub1:L03TY9pAulwt6t85yGoPNracwgXgJnWiIfHBKEndePbPGibBK5CZ0e2Y9qMpqiILWz8XHfSxO6hpOTUfXXvHbQ==@projecthub1.documents.azure.com:10255/?ssl=true"
 
+	//picking key value pair from KV endpoints of consul
+	userpasswordRes, _ := http.Get("http://127.0.0.1:8500/v1/kv/database/usernamepassword?raw")
+	siteRes, _ := http.Get("http://127.0.0.1:8500/v1/kv/database/site?raw")
+	//dbnameRes,_ := http.Get("http://127.0.0.1:8500/v1/kv/database/db?raw")
+	upass, _ := ioutil.ReadAll(userpasswordRes.Body)
+	//username password
+	upasss1 := string(upass)
+
+	fmt.Println("Checkpoint 1")
+
+	sitename, _ := ioutil.ReadAll(siteRes.Body)
+	//site name
+	sitename1 := string(sitename)
+	uri = "mongodb://" + upasss1 + sitename1
+	//fmt.Printf(uri)
+
+	client, notworking := mongo.NewClient(options.Client().ApplyURI(uri))
+	if notworking != nil {
+		fmt.Printf(notworking.Error())
+	}
+
+	mongoctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	er := client.Connect(mongoctx)
+
+	//fmt.Println("Checkpoint 2")
+
+	if er != nil {
+		log.Fatal(er)
+	}
 	//for accessing media and counter collections
 	collection := client.Database("MediaDB").Collection("media")
 	countercollection := client.Database("MediaDB").Collection("counter")
@@ -151,25 +164,29 @@ func PostToDB(w http.ResponseWriter, r *http.Request) {
 	filter := bson.M{"search": "tom"}
 	err1 := countercollection.FindOne(mongoctx, filter).Decode(&Result2)
 	if err1 != nil {
-		log.Fatal(err1)
+		fmt.Printf("ERORRRRRR1")
+		fmt.Printf(err1.Error())
 	}
-
+	//fmt.Println("Checkpoint 3")
 	newMediaID := Result2.Counter
 
 	//insert operation
 	_, err2 := collection.InsertOne(mongoctx, bson.M{"userid": req.Userid, "typeofmedia": req.Typeofmedia, "mediaid": newMediaID, "URL": req.URL, "likes": 0, "comments": "", "aoi": req.AOItags, "date": req.Date, "description": req.Description})
 
 	if err2 != nil {
-		log.Fatal(err2)
+		fmt.Printf("ERORRRRRR2")
+		fmt.Printf(err2.Error())
 	}
 
 	//Incrementing the value of counter for media ID
-
 	filter2 := bson.D{{"search", "tom"}}
+
 	update := bson.D{{"$inc", bson.D{{"counter", 1}}}}
+
 	_, err3 := countercollection.UpdateOne(mongoctx, filter2, update)
 	if err3 != nil {
-		log.Fatal(err3)
+		fmt.Printf("ERORRRRRR3")
+		fmt.Printf(err3.Error())
 	}
 
 	fmt.Println(req)
@@ -203,7 +220,6 @@ func main() {
 	consul.Agent().ServiceRegister(registration)
 
 	////////////////////////////////
-	// Testing webhook and jenkins
 	fmt.Println("[RecoEngine] Starting Go Server at 8082...")
 	log.Fatal(http.ListenAndServe(":8082", router))
 
