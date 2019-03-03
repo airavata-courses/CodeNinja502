@@ -11,10 +11,5 @@ pipeline{
 				sh 'cd ./feed-fetch-service && mvn test'
 			}
 		}
-		stage('Deploy'){
-			steps{
-				build 'deploy-feed-fetch-service'
-			}
-		}
 	}
 }
