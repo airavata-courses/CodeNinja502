@@ -11,5 +11,7 @@ https://github.com/airavata-courses/CodeNinja502/wiki/Assignment-1
 https://github.com/airavata-courses/CodeNinja502/wiki/Assignment-2
 
 #### Assignment/Milestone 3
+https://github.com/airavata-courses/CodeNinja502/wiki/Assignment-3
 
 #### Assignment/Milestone 4
+https://github.com/airavata-courses/CodeNinja502/wiki/Assignment-4
