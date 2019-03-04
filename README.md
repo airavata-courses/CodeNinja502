@@ -5,7 +5,11 @@
 
 
 #### Assignment/Milestone 1
-https://github.com/airavata-courses/CodeNinja502/blob/Assignment-1/installation.md
+https://github.com/airavata-courses/CodeNinja502/wiki/Assignment-1
 
 #### Assignment/Milestone 2
 https://github.com/airavata-courses/CodeNinja502/wiki/Assignment-2
+
+#### Assignment/Milestone 3
+
+#### Assignment/Milestone 4
