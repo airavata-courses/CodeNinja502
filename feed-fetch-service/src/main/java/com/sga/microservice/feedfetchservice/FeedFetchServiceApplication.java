@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-@EnableConfigurationProperties(AppProperties.class)
+//@EnableConfigurationProperties(AppProperties.class)
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class FeedFetchServiceApplication {
 
 	public static void main(String[] args) {
