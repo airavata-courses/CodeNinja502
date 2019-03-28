@@ -27,9 +27,9 @@ public class MediaRepository {
 	public String getURLS() {
 		String res = null;
 
-		final String clientURI;// = "mongodb://projecthub1:L03TY9pAulwt6t85yGoPNracwgXgJnWiIfHBKEndePbPGibBK5CZ0e2Y9qMpqiILWz8XHfSxO6hpOTUfXXvHbQ==@projecthub1.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+		final String clientURI = "mongodb://projecthub2:7CUAuyH3zX6RhgQLuUw8afiSkzuk5gKphGl9omu9DUb6nj2JTITkkhjpvf9oHFHUYABMNwHivWkQHfz4JNrLUw==@projecthub2.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
 
-		final String usernamepassword="http://127.0.0.1:8500/v1/kv/database/usernamepassword?raw";
+		/*inal String usernamepassword="http://127.0.0.1:8500/v1/kv/database/usernamepassword?raw";
 		final String sitename="http://127.0.0.1:8500/v1/kv/database/site?raw";
 		URL upass=null;
 		URL site=null;
@@ -80,7 +80,7 @@ public class MediaRepository {
 
 		clientURI=sb1.toString();
 		//System.out.println("skjhfdkjhdskufhlkdsahfudhflkuhdflkuhlkdhuflkahflkashdflkahdflkhdflkj");
-		System.out.println(clientURI);
+		System.out.println(clientURI);*/
 
 		final MongoClient client = new MongoClient(new MongoClientURI(clientURI));
 
