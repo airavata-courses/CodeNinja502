@@ -25,10 +25,6 @@ public class MediaRepository {
 	}
 
 	public String getURLS() {
-		String res = null;
-
-		final String clientURI = "mongodb://projecthub2:7CUAuyH3zX6RhgQLuUw8afiSkzuk5gKphGl9omu9DUb6nj2JTITkkhjpvf9oHFHUYABMNwHivWkQHfz4JNrLUw==@projecthub2.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
-
 		/*inal String usernamepassword="http://127.0.0.1:8500/v1/kv/database/usernamepassword?raw";
 		final String sitename="http://127.0.0.1:8500/v1/kv/database/site?raw";
 		URL upass=null;
@@ -82,10 +78,14 @@ public class MediaRepository {
 		//System.out.println("skjhfdkjhdskufhlkdsahfudhflkuhdflkuhlkdhuflkahflkashdflkahdflkhdflkj");
 		System.out.println(clientURI);*/
 
+		String res = null;
+
+		final String clientURI = "mongodb://projecthub2:7CUAuyH3zX6RhgQLuUw8afiSkzuk5gKphGl9omu9DUb6nj2JTITkkhjpvf9oHFHUYABMNwHivWkQHfz4JNrLUw==@projecthub2.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
 		final MongoClient client = new MongoClient(new MongoClientURI(clientURI));
 
-		final String dbName = "MediaDB";// eElement.getElementsByTagName("dbName").item(0).getTextContent();
-		final String collectionName = "media";// eElement.getElementsByTagName("collectionName").item(0).getTextContent();
+		final String dbName = "MediaDB";           // eElement.getElementsByTagName("dbName").item(0).getTextContent();
+		final String collectionName = "media";     // eElement.getElementsByTagName("collectionName").item(0).getTextContent();
+		
 		@SuppressWarnings(value = { "deprecation" })
 		final DB db = client.getDB(dbName);
 		final DBCollection collection = db.getCollection(collectionName);
