@@ -1,7 +1,5 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-ARG DEPENDENCY=target/dependency
-COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY ${DEPENDENCY}/META-INF /app/META-INF
-COPY ${DEPENDENCY}/BOOT-INF/classes /app
-ENTRYPOINT ["java","-cp","app:app/lib/*","hello.Application"]
+FROM java:openjdk-8-jre-alpine
+COPY . /opt/app
+WORKDIR /opt/app/feed-fetch-service
+EXPOSE 8090
+CMD ["java", "-jar", "./target/feed-fetch-service-0.0.5.jar"]
