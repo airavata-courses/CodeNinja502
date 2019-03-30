@@ -1,4 +1,4 @@
-package com.sga.microservice.feedfetchservice;
+/*package com.sga.microservice.feedfetchservice;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -6,5 +6,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AppProperties {
     //private String ipAddress="127.4.5.6";
 
-}
+}*/
 
