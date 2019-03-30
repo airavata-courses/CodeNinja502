@@ -13,5 +13,6 @@ pipeline{
 				sh 'docker push pulmathdocker/fetch-service'
 			}
 		}
+		
 	}
 }
