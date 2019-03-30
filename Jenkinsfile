@@ -10,6 +10,7 @@ pipeline{
 			steps{
 				sh 'cd ./feed-fetch-service && mvn test'
 				sh 'docker build -t pulmathdocker/fetch-service .'
+				sh 'docker push pulmathdocker/fetch-service'
 			}
 		}
 	}
