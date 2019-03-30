@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-node
+  labels:
+   app: login-node
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+    app: login-node
+  template:
+    metadata:
+      labels:
+        app: login-node
+    spec:
+      containers:
+      - name: login-node
+        image: pmorpari/login-service 
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: login-node
+spec:
+  type: NodePort
+  selector:
+   app: login-node
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+    nodePort: 30002
