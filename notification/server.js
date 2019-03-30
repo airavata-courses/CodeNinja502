@@ -13,8 +13,12 @@ var express = require('express'),
     app.get('/', function (req, res) {
     res.render('index');
     });
-amqp.connect('amqp://localhost', function(err, conn) {
-  conn.createChannel(function(err, ch) {
+amqp.connect('amqp://149.165.170.107', function(err, conn) {
+ if (err){
+      console.log(err);
+  }
+ else{
+   conn.createChannel(function(err, ch) {
     var q = 'hello';
 
     ch.assertQueue(q, {durable: false});
@@ -49,7 +53,8 @@ amqp.connect('amqp://localhost', function(err, conn) {
         console.log('Server is running at port: ',port);
         //console.log(" [x] Received %s", msg.content.toString());
       }, {noAck: true});
-    });
+  });
+ }
 });
 
 
