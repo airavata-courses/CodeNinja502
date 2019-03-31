@@ -9,6 +9,8 @@ pipeline{
 		stage('Test'){
 			steps{
 				sh 'docker build -t pulmathdocker/fetch-service .'
+				sh 'sudo chown "$USER":"$USER" /home/"$USER"/.docker -R'
+                                sh 'sudo chmod g+rwx "/home/$USER/.docker" -R'
 				sh 'docker push pulmathdocker/fetch-service'
 			}
 		}
