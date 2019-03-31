@@ -1,1 +1,15 @@
-
+kind: Service
+apiVersion: v1
+metadata:
+  name: fetch-service-deployment
+spec:
+  selector: 
+    app: fetch-service-deployment
+  ports:
+    - port: 9090
+      targetPort: 9090
+      nodePort: 30008
+      protocol: TCP
+  type: LoadBalancer
+  externalIPs:  
+    - 149.165.169.156
