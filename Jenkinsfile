@@ -8,7 +8,7 @@ pipeline{
 		}	
 		stage('Test'){
 			steps{
-				sh 'cd ./feed-fetch-service && docker build -t pulmathdocker/fetch-service .'
+				sh 'docker build -t pulmathdocker/fetch-service .'
 				sh 'docker push pulmathdocker/fetch-service'
 			}
 		}
