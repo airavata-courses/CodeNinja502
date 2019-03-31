@@ -14,7 +14,7 @@ spec:
     spec:
        containers:
         - name: fetch-service-deployment 
-          image: pulmathdocker/fetch-service 
+          image: pulmathdocker/fetch-service:latest 
           imagePullPolicy: Always 
           ports:
             - containerPort: 9090
