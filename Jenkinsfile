@@ -13,6 +13,11 @@ pipeline{
 				sh 'docker push pulmathdocker/fetch-service'
 			}
 		}
+		stage('Deploy'){
+			steps{
+				build 'deploy-feed-service'
+			}
+		}
 		
 	}
 }
