@@ -1,5 +1,5 @@
 FROM java:8
 WORKDIR /
-ADD CodeNinja502/feed-fetch-service/target/feed-fetch-service-0.0.5.jar app.jar
+ADD feed-fetch-service/target/feed-fetch-service-0.0.5.jar app.jar
 EXPOSE 9090
 CMD ["java","-jar","app.jar"]
