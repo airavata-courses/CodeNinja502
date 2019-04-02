@@ -1,5 +1,4 @@
-FROM java:openjdk-8-jre-alpine
-COPY . /opt/app
-WORKDIR /opt/app/feed-fetch-service
+FROM openjdk:latest
+ADD target/feed-fetch-service-0.0.5.jar app.jar
+ENTRYPOINT ["java","-jar","app.jar"]
 EXPOSE 9090
-CMD ["java", "-jar", "./target/feed-fetch-service-0.0.5.jar"]
