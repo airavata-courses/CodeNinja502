@@ -16,7 +16,6 @@ import (
 
 	"github.com/gorilla/mux"
 
-	consulapi "github.com/hashicorp/consul/api"
 	bson "go.mongodb.org/mongo-driver/bson"
 	mongo "go.mongodb.org/mongo-driver/mongo"
 	options "go.mongodb.org/mongo-driver/mongo/options"
@@ -117,25 +116,8 @@ func PostToDB(w http.ResponseWriter, r *http.Request) {
 	//if errc != nil {
 	//      log.Fatal(errc)
 
-	var uri string
-
 	//uri2 := "mongodb://projecthub1:L03TY9pAulwt6t85yGoPNracwgXgJnWiIfHBKEndePbPGibBK5CZ0e2Y9qMpqiILWz8XHfSxO6hpOTUfXXvHbQ==@projecthub1.documents.azure.com:10255/?ssl=true"
-
-	//picking key value pair from KV endpoints of consul
-	userpasswordRes, _ := http.Get("http://127.0.0.1:8500/v1/kv/database/usernamepassword?raw")
-	siteRes, _ := http.Get("http://127.0.0.1:8500/v1/kv/database/site?raw")
-	//dbnameRes,_ := http.Get("http://127.0.0.1:8500/v1/kv/database/db?raw")
-	upass, _ := ioutil.ReadAll(userpasswordRes.Body)
-	//username password
-	upasss1 := string(upass)
-
-	fmt.Println("Checkpoint 1")
-
-	sitename, _ := ioutil.ReadAll(siteRes.Body)
-	//site name
-	sitename1 := string(sitename)
-	uri = "mongodb://" + upasss1 + sitename1
-	//fmt.Printf(uri)
+	uri := "mongodb://projecthub2:7CUAuyH3zX6RhgQLuUw8afiSkzuk5gKphGl9omu9DUb6nj2JTITkkhjpvf9oHFHUYABMNwHivWkQHfz4JNrLUw==@projecthub2.documents.azure.com:10255/?ssl=true"
 
 	client, notworking := mongo.NewClient(options.Client().ApplyURI(uri))
 	if notworking != nil {
@@ -205,21 +187,6 @@ func main() {
 		fmt.Fprintf(w, "HealthCheck", r.URL.Path)
 	})
 
-	//////////////Consul Registration/////////////////
-	config := consulapi.DefaultConfig()
-	consul, _ := consulapi.NewClient(config)
-	registration := new(consulapi.AgentServiceRegistration)
-	registration.Name = "goService"
-	registration.Port = 8082
-	registration.Check = new(consulapi.AgentServiceCheck)
-	registration.Check.HTTP = "http://localhost:8082/rpc"
-	registration.Check.Interval = "5s"
-
-	registration.Check.DeregisterCriticalServiceAfter = "5s"
-
-	consul.Agent().ServiceRegister(registration)
-
-	////////////////////////////////
 	fmt.Println("[RecoEngine] Starting Go Server at 8082...")
 	log.Fatal(http.ListenAndServe(":8082", router))
 
