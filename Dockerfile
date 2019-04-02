@@ -1,5 +1,5 @@
 FROM java:8
-WORKDIR /
-ADD feed-fetch-service/target/feed-fetch-service-0.0.5.jar app.jar
 EXPOSE 9090
-CMD ["java","-jar","app.jar"]
+COPY . /opt/app
+WORKDIR /opt/app/feed-fetch-service
+ENTRYPOINT ["java","-jar","target/feed-fetch-service-0.0.5.jar"]
