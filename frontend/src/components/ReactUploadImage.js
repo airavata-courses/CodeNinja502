@@ -37,7 +37,7 @@ class ReactUploadImage extends React.Component {
             {
 		    console.log(data + this.state.selectedFile)
                 axios
-                  .post('http://149.165.170.76:5000/upload/upload', data, {
+                  .post('http://149.165.170.173:5000/upload/upload', data, {
                     onUploadProgress: ProgressEvent => {
                       this.setState({
                         loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
