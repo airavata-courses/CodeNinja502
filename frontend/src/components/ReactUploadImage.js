@@ -1,7 +1,7 @@
 import React from 'react';
 import qs from 'qs';
 import GET_ERRORS from '../actions/types';
-const CREATE_POST_URL ='http://149.165.170.128:30003/rpc';
+const CREATE_POST_URL ='http://149.165.171.60:30003/rpc';
 
 const axios = require("axios");
 
