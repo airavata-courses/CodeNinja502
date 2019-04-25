@@ -25,7 +25,8 @@ public class MediaRepository {
 		
 		String res = null;
 
-		final String clientURI = "mongodb://projecthub2:7CUAuyH3zX6RhgQLuUw8afiSkzuk5gKphGl9omu9DUb6nj2JTITkkhjpvf9oHFHUYABMNwHivWkQHfz4JNrLUw==@projecthub2.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+		//final String clientURI = "mongodb://projecthub2:7CUAuyH3zX6RhgQLuUw8afiSkzuk5gKphGl9omu9DUb6nj2JTITkkhjpvf9oHFHUYABMNwHivWkQHfz4JNrLUw==@projecthub2.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+		final String clientURI = "mongodb://projecthub:Ywu2W9vK2xHSjj8SvZOCi5x4pc1gMmKrpjI9bU3xtPDE0UcOR8uRcyfvCeQBxyN6dKPfaBA0qjtJme0dux9mjA==@projecthub.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
 		final MongoClient client = new MongoClient(new MongoClientURI(clientURI));
 
 		final String dbName = "MediaDB";           
