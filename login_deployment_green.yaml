@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: login-node
+  name: login-node-green
   labels:
    app: login-node
 spec:
@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: login-node
+        color: green
     spec:
       containers:
       - name: login-node
@@ -20,17 +21,4 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: login-node
-spec:
-  type: NodePort
-  selector:
-   app: login-node
-  ports:
-  - protocol: TCP
-    port: 5000
-    targetPort: 5000
-    nodePort: 30002
+

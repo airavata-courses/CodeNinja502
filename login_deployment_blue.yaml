@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-node-blue
+  labels:
+   app: login-node
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+    app: login-node
+  template:
+    metadata:
+      labels:
+        app: login-node
+        color: blue
+    spec:
+      containers:
+      - name: login-node
+        image: pmorpari/login-service 
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upload-blue
+  labels:
+   app: upload-service 
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+    app: upload-service
+  template:
+    metadata:
+      labels:
+        app:  upload-service
+        color: blue
+
+    spec:
+      containers:
+      - name: upload-service
+        image: pmorpari/uploadservice:v3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+

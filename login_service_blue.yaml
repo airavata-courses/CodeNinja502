@@ -1,0 +1,15 @@
+kind: Service 
+apiVersion: v1 
+metadata: 
+  name: login-node 
+spec: 
+  type: NodePort 
+  selector: 
+   app: login-node
+   color: blue 
+  ports: 
+  - protocol: TCP 
+    port: 5000 
+    targetPort: 5000 
+    nodePort: 30002
+

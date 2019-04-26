@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ui
+  name: ui-blue
   labels:
    app: ui
 spec:
@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: ui
+        color: blue
     spec:
       containers:
       - name: ui
@@ -20,18 +21,4 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: ui
-spec:
-  type: NodePort
-  selector:
-   app: ui
-  ports:
-  - protocol: TCP
-    port: 3000
-    targetPort: 3000
-    nodePort: 30004
-    name: http
+
