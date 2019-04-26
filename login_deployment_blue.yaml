@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: login-node
-        image: pmorpari/login-service 
+        image: pmorpari/login-blue 
         imagePullPolicy: Always
         ports:
         - containerPort: 5000

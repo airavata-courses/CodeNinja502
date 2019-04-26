@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: fetch
-        image: pulmathdocker/fetch-service 
+        image: pmorpari/fetch-blue 
         imagePullPolicy: Always
         ports:
         - containerPort: 9090

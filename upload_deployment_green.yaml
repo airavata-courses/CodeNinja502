@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: upload-service
-        image: pmorpari/uploadservice:v3
+        image: pmorpari/upload-green
         imagePullPolicy: Always
         ports:
         - containerPort: 8082
