@@ -1,35 +1,41 @@
 package com.sga.microservice.feedfetchservice;
 
-import org.junit.Assert;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
 public class FeedFetchServiceApplicationTests {
 
-	/*@Autowired
-	MediaController mc;
+	@InjectMocks
+	private MediaController mediaController;
 
-	@LocalServerPort
-	private int port;*/
+	private MockMvc mockMvc;
+
+	@Before
+	public void setup() {
+		MockitoAnnotations.initMocks(this);
+		mockMvc = MockMvcBuilders.standaloneSetup(mediaController).build();
+	}
+
+	@Test
+	public void getMediaDBData() throws Exception {
+		mockMvc.perform(get("/getLinks")).andExpect(status().isOk());
+	}
 
 	@Test
 	public void contextLoads() {
-
-		/*final RestTemplate restTemplate = new RestTemplate();
-		
-		final String baseUrl = "http://149.165.169.156:9090/getLinks";
-
-		final ResponseEntity<String> result = restTemplate.getForEntity(baseUrl, String.class);
-		System.out.println(result.getBody());
-		Assert.assertEquals(200, result.getStatusCodeValue());*/
 	}
 
 }
