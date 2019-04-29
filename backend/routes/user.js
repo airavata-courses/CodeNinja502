@@ -48,6 +48,7 @@ router.post('/register', function(req, res) {
                             newUser
                                 .save()
                                 .then(user => {
+                                    console.log("returning user")
                                     res.json(user)
                                 }); 
                         }
